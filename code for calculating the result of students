@@ -1,0 +1,66 @@
+import java.io.DataInputStream;
+import java.io.IOException;
+
+class StudMarks
+{
+	public static void main (String args[])
+	{
+		int sub1 = 0, sub2=0, sub3=0,total;
+		float avg = 0.0f;
+		DataInputStream d = new DataInputStream (System.in);
+		System.out.print("To Check Class of Student");
+		try
+		{
+			System.out.print("\n\nEnter Marks of Subject 1 = ");
+			sub1 = Integer.parseInt(d.readLine());
+			System.out.print("\n\nEnter Marks of Subject 2 = ");
+			sub2 = Integer.parseInt(d.readLine());
+			System.out.print("\n\nEnter Marks of Subject 3 = ");
+			sub3 = Integer.parseInt(d.readLine());
+		}
+		catch (IOException ioe) { }
+		total = sub1 + sub2 + sub3;
+		avg = total/3.0f;
+
+		if(sub1 > 100 || sub1 < 0 || sub2 > 100 || sub2 < 0 || sub3 > 100 || sub3 < 0)
+		{
+			System.out.print("\n\nPlease Enter Valid Marks Out of 100 Only");
+			System.out.print("\n\n");
+		}
+		else
+		{
+			System.out.print("\n\nTotal Marks Obtained = " + total);
+			if(sub1 < 40 || sub2 < 40 || sub3 < 40)
+			{
+				System.out.print("\n\nResult = Fail");
+				System.out.print("\n\n");
+			}
+			else
+			{
+				System.out.printf("\n\nTotal Percentage Obtained = %.2f ", avg);
+				if(avg >= 70)
+				{
+					System.out.print("\n\nClass of Student = Distinction");
+				}
+				else
+				{
+					if(avg >= 60)
+					{
+						System.out.print("\n\nClass of Student = First Class");
+					}
+					else
+					{
+						if(avg >= 50)
+						{
+							System.out.print("\n\nClass of Student = Second Class");
+						}
+						else
+						{
+							System.out.print("\n\nClass of Student = Pass Class");
+						}
+					}
+				}
+			}
+		}
+	}
+}
